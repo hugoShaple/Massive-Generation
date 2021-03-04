@@ -9,13 +9,19 @@ function onOpen() {
 
 
 function crtGdriveFolder() {
+  // Récupération du spreadsheet actif ainsi que la sheet active
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  // Création d'un bouton & d'un champ text dans le menu GDrive 
   var levelInput = Browser.inputBox('input Level', Browser.Buttons.OK_CANCEL);  
   var Level =  levelInput * 2 + 1; 
-  var numRows = sheet.getLastRow();   // Number of rows to process
+  // Nombre de ligne à executer
+  var numRows = sheet.getLastRow();
+  // Range à executer
   var dataRange = sheet.getRange(3, Number(Level)-1, numRows, Number(Level)); //startRow, startCol, endRow, endCol
+  // Récupération des valeurs de la range donnée précédement
   var data = dataRange.getValues();
   var parentFolderID = new Array();
+  console.log(data)
 
   for(var i in data)
     {        
