@@ -7,13 +7,9 @@ function onOpen() {
 };
 
 function generation(){
-  // Get all data in the active Sheet
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const rows = ss.getDataRange().getValues();
-
-  // Clean data
-  rows.shift();
-  rows.forEach((element) => {
+  
+  const data = getAllData_();
+  data.forEach((element) => {
     var name = element[0];
     var isFile = element[1];
     var isFolder = element[2];
@@ -37,6 +33,18 @@ function generation(){
     }
   })
 };
+
+function update() {
+ 
+}
+
+function getAllData_(){
+// Get all data in the active Sheet
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const rows = ss.getDataRange().getValues();
+  rows.shift();
+  return rows
+}
 
 function getFolderByName_(folderName){
   if(!folderName){
