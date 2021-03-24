@@ -35,7 +35,8 @@ function generation(){
 };
 
 function update() {
- 
+  const data = getAllData_();
+  console.log(data)
 }
 
 function getAllData_(){
