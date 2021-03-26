@@ -1,5 +1,5 @@
 // Create folder / file in good place
-function generation(){
+function generation_(){
   const data = getAllData_();
   data.forEach((element) => {
     var name = element[0];
@@ -7,7 +7,7 @@ function generation(){
     var isFolder = element[2];
     var parentFolderName = element[3];
 
-    var parentFolder = getFolderByName_(parentFolderName);
+    var parentFolder = getFolderByName_(parentFolderName);  
 
     // Creation by condition
     if(!parentFolder){
@@ -15,17 +15,16 @@ function generation(){
       return;
     }
     if(!isFile && isFolder){
-        DriveApp.createFolder(name).moveTo(parentFolder);
+      DriveApp.createFolder(name).moveTo(parentFolder);
     }
     if(isFile && !isFolder){
-        DriveApp.createFile(name, 'content').moveTo(parentFolder);
+      DriveApp.createFile(name, 'content').moveTo(parentFolder);
     }
     if(isFile && isFolder || !isFile && !isFolder){
       console.error('ERROR : Dans la saisie tu type, merci de renseigner uniqument 1 type pour le champ suivant : ', name);
     }
   })
 };
-
 
 // Get all data in the active Sheet
 function getAllData_(){
