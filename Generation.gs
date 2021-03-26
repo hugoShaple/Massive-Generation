@@ -1,13 +1,5 @@
-function onOpen() {
-    const ui = SpreadsheetApp.getUi();
-    ui.createMenu('Actions')
-    .addItem("Générer l'architecture", 'generation')
-    .addItem("Mettre à jour l'architecture", 'update')
-    .addToUi();
-};
-
+// Create folder / file in good place
 function generation(){
-  
   const data = getAllData_();
   data.forEach((element) => {
     var name = element[0];
@@ -34,19 +26,16 @@ function generation(){
   })
 };
 
-function update() {
-  const data = getAllData_();
-  console.log(data)
-}
 
-function getAllData_(){
 // Get all data in the active Sheet
+function getAllData_(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const rows = ss.getDataRange().getValues();
   rows.shift();
   return rows
 }
 
+// Get Folder by Name or redirect to root folder
 function getFolderByName_(folderName){
   if(!folderName){
     return DriveApp.getRootFolder()
