@@ -1,4 +1,4 @@
-function getSelectRange(){
+/*function getSelectRange(){
   var html = '<label>Selectionner un champ :</label></br><input type="text" id="selrg"/><br/><input type="button" value="Confirmer" onClick="getSelectedRange();"/></br></br>';
   html += '<label>Modifier la donnée par :</label></br><input  type="text" id="updata"/></br><input type="button" value="Confirmer" onClick="updateData()"/>';
   html += '<script>function getSelectedRange(){google.script.run.withSuccessHandler((e) => {document.getElementById("selrg").value=e;}).getSelRange();}';
@@ -18,4 +18,22 @@ function getSelRange(){
 function updateData(){
   var value = getSelRange()
   return value;
-};
+};*/
+
+function getRangeData()  {
+  var selection = SpreadsheetApp.getSelection();
+  var a1Selection = selection.getActiveRange().getA1Notation();
+
+  var sheet = SpreadsheetApp.getActiveSheet(),
+      range,
+      values_array; 
+
+  range = sheet.getRange(a1Selection);
+  values_array = range.getValues();
+  var strValuesArray = JSON.stringify(values_array)
+
+  for(var i; i < strValuesArray; i++){
+      var folder = DriveApp.getFoldersByName(strValuesArray)
+      console.log(folder)
+  }
+}
