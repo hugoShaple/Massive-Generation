@@ -1,4 +1,4 @@
-function getRangeData()  {
+function rename()  {
   var selection = SpreadsheetApp.getSelection();
   var a1Selection = selection.getActiveRange().getA1Notation();
 
@@ -37,7 +37,7 @@ function getRangeData()  {
 
 function getUserValue_(element){
   var ui = SpreadsheetApp.getUi()
-  var response = ui.prompt('Renomage', 'Renomer le dossier "' + element +'"', ui.ButtonSet.OK_CANCEL);
+  var response = ui.prompt('Renomage', 'Renommer le dossier "' + element +'"', ui.ButtonSet.OK_CANCEL);
 
   if (response.getSelectedButton() == ui.Button.OK) {
     var value = response.getResponseText()

@@ -3,6 +3,6 @@ function onOpen() {
     const ui = SpreadsheetApp.getUi();
     ui.createMenu('Actions')
     .addItem("Générer l'architecture", 'generation_')
-    .addItem("Mettre à jour l'architecture", 'getRangeData')
+    .addItem("Renommer un élément", 'rename')
     .addToUi();
 };
